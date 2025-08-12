@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+  <head>
+    <!--
+  README (How to use and deploy)
+  - Add a new app:
+    1) Edit `apps.json` and append a new object matching the documented schema (name, tagline, platforms, links, thumbnail, hero, year, stack, highlights).
+    2) Place thumbnail/hero images in `assets/` and reference them from `apps.json`. Prefer optimized PNG/JPG/WebP; keep thumbnails around 600x375 and heroes around 1600x900.
+    3) Commit and push. The site auto-loads from `apps.json`.
+  - Change links or text: Update `apps.json` (for app links) and the sections in this file for About/Contact.
+  - Deploy to GitHub Pages (user site):
+    1) Repo name must be `testablekarma.github.io`.
+    2) In GitHub, open Settings → Pages → Build and deployment → Source: Deploy from branch → Branch: `main` (or `master`).
+    3) The site will be available at `https://testablekarma.github.io/`.
+  - Custom domain:
+    1) In Settings → Pages, set your custom domain (e.g., `apps.markwebb.dev`).
+    2) Create DNS A/AAAA/CNAME records to GitHub Pages per GitHub docs.
+    3) GitHub will add a `CNAME` file to your repo; commit it.
+  - Performance tips:
+    - Use system fonts (already configured), defer JS, lazy-load images.
+    - Compress images and prefer modern formats (WebP/AVIF) when possible.
+  -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mark Webb — Apps</title>
+    <meta
+      name="description"
+      content="A curated showcase of apps by Mark Webb — iOS, Android, Web, and backend projects."
+    />
+    <meta
+      name="theme-color"
+      content="#0a0a0a"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mark Webb — Apps" />
+    <meta
+      property="og:description"
+      content="A curated showcase of apps by Mark Webb — iOS, Android, Web, and backend projects."
+    />
+    <meta property="og:url" content="https://testablekarma.github.io/" />
+    <!-- Optional: Replace with a real image in assets and update path -->
+    <!-- <meta property="og:image" content="https://testablekarma.github.io/assets/og-image.png" /> -->
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mark Webb — Apps" />
+    <meta
+      name="twitter:description"
+      content="A curated showcase of apps by Mark Webb — iOS, Android, Web, and backend projects."
+    />
+    <!-- <meta name="twitter:image" content="https://testablekarma.github.io/assets/og-image.png" /> -->
+
+    <link rel="preload" href="/styles.css" as="style" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <h1 class="site-title">Mark Webb — Apps</h1>
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="#apps">Apps</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          aria-pressed="false"
+          aria-label="Toggle color theme"
+          title="Toggle theme"
+        >
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <h2 id="hero-title">Thoughtful, fast, and user-loved apps.</h2>
+        <p class="hero-tag">iOS • Android • Web • Backend</p>
+        <ul class="hero-callouts" aria-label="Focus areas">
+          <li>Performance-first UX</li>
+          <li>Clean architecture</li>
+          <li>Privacy-aware analytics</li>
+        </ul>
+      </div>
+    </section>
+
+    <main id="main" class="container" role="main">
+      <section id="apps" aria-labelledby="apps-title">
+        <h2 id="apps-title">Apps</h2>
+
+        <div id="error" class="error" role="alert" hidden>
+          <p>Couldn’t load apps. Please check your connection and try again.</p>
+          <button id="retryBtn" class="btn">Retry</button>
+        </div>
+
+        <div class="filters" id="filters" aria-label="Filters">
+          <div class="filters-row">
+            <label for="search" class="visually-hidden">Search apps</label>
+            <input
+              id="search"
+              name="search"
+              type="search"
+              inputmode="search"
+              placeholder="Search by name, tagline, or stack"
+              autocomplete="off"
+            />
+
+            <div class="year-controls" aria-label="Year range">
+              <div>
+                <label for="yearMin">From</label>
+                <input
+                  id="yearMin"
+                  name="yearMin"
+                  type="number"
+                  inputmode="numeric"
+                  aria-describedby="yearRangeHint"
+                />
+              </div>
+              <div>
+                <label for="yearMax">To</label>
+                <input
+                  id="yearMax"
+                  name="yearMax"
+                  type="number"
+                  inputmode="numeric"
+                  aria-describedby="yearRangeHint"
+                />
+              </div>
+              <div id="yearRangeHint" class="visually-hidden">
+                Enter a start and end year to filter
+              </div>
+            </div>
+          </div>
+
+          <div class="chips-group" aria-labelledby="platforms-label">
+            <div class="chips-header">
+              <span id="platforms-label">Platforms</span>
+              <button
+                class="chips-clear btn-link"
+                data-clear="platforms"
+                hidden
+              >
+                Clear
+              </button>
+            </div>
+            <div
+              id="platformChips"
+              class="chips"
+              role="group"
+              aria-label="Platform chips"
+            ></div>
+          </div>
+
+          <div class="chips-group" aria-labelledby="stack-label">
+            <div class="chips-header">
+              <span id="stack-label">Tech Stack</span>
+              <button class="chips-clear btn-link" data-clear="stack" hidden>
+                Clear
+              </button>
+            </div>
+            <div
+              id="stackChips"
+              class="chips"
+              role="group"
+              aria-label="Stack chips"
+            ></div>
+          </div>
+
+          <div class="filters-footer">
+            <output id="resultCount" aria-live="polite">Showing 0 apps</output>
+            <button id="clearAll" class="btn-link" hidden>
+              Clear all filters
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="appsGrid"
+          class="apps-grid"
+          aria-live="polite"
+          aria-busy="true"
+        ></div>
+      </section>
+
+      <section id="about" aria-labelledby="about-title" class="about">
+        <h2 id="about-title">About</h2>
+        <p>
+          I’m Mark Webb, a product-minded engineer focused on shipping fast,
+          accessible, and resilient apps across iOS, Android, and the web. I
+          enjoy performance tuning, clean architecture, and building delightful
+          experiences.
+        </p>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title" class="contact">
+        <h2 id="contact-title">Contact</h2>
+        <ul class="contact-list">
+          <li>
+            <a href="mailto:mark.webb@clearscore.com" class="contact-link">
+              <span class="icon" aria-hidden="true">✉️</span>
+              <span class="label">Email</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/testablekarma"
+              class="contact-link"
+              rel="me noopener"
+              target="_blank"
+              aria-label="GitHub profile"
+            >
+              <span class="icon" aria-hidden="true">🐙</span>
+              <span class="label">GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/testablekarma/"
+              class="contact-link"
+              rel="me noopener"
+              target="_blank"
+              aria-label="LinkedIn profile"
+            >
+              <span class="icon" aria-hidden="true">in</span>
+              <span class="label">LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://x.com/testablekarma"
+              class="contact-link"
+              rel="me noopener"
+              target="_blank"
+              aria-label="X (formerly Twitter) profile"
+            >
+              <span class="icon" aria-hidden="true">𝕏</span>
+              <span class="label">X</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>© <span id="yearNow"></span> Mark Webb</p>
+        <p>Last updated: <time id="lastUpdated" aria-live="polite"></time></p>
+      </div>
+    </footer>
+
+    <div
+      id="modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      hidden
+    >
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-card" role="document">
+        <button class="modal-close" aria-label="Close" data-close>
+          &times;
+        </button>
+        <div class="modal-body">
+          <div class="modal-hero">
+            <img id="modalHero" alt="" loading="lazy" />
+          </div>
+          <div class="modal-content">
+            <h3 id="modal-title"></h3>
+            <p id="modal-tagline"></p>
+            <div id="modal-badges" class="badges"></div>
+            <ul id="modal-highlights" class="highlights"></ul>
+            <div id="modal-links" class="links"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script defer src="/app.js"></script>
+  </body>
+</html>

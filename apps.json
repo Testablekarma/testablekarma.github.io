@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Compendium",
+    "tagline": "AI MTG deck analysis & card scanning",
+    "platforms": ["iOS", "Android"],
+    "links": {
+      "website": "https://mtg-compendium.tech/",
+      "appStore": "https://apps.apple.com/us/app/mtg-compendium/id6746125584",
+      "playStore": "https://play.google.com/store/apps/details?id=uk.co.backflipmedia.compendium"
+    },
+    "thumbnail": "compendium-apple-touch-icon.png",
+    "hero": "assets/compendium-hero.png",
+    "year": 2025,
+    "stack": ["Flutter", "Vapor", "OpenAI"],
+    "highlights": [
+      "Deck analysis and insights",
+      "Card scanning",
+      "Export & share",
+      "Compatible with all MTG formats"
+    ]
+  },
+  {
+    "name": "Transcriber AI: Live Notes & Summaries",
+    "tagline": "Live Notes & Summaries",
+    "platforms": ["iOS"],
+    "links": {
+      "website": "https://testablekarma.github.io/transcriber",
+      "appStore": "https://apps.apple.com/us/app/transcriber-ai-live-notes/id1496811123"
+    },
+    "thumbnail": "assets/pulse-thumb.png",
+    "hero": "assets/pulse-hero.png",
+    "year": 2024,
+    "stack": ["SwiftUI", "CloudKit", "WebAssembly"],
+    "highlights": [
+      "On-device categorisation",
+      "Privacy-first syncing",
+      "Offline dashboards"
+    ]
+  },
+  {
+    "name": "iQuit: Vape-Free Companion",
+    "tagline": "Calm support & health stats",
+    "platforms": ["iOS"],
+    "links": {
+      "website": "https://testablekarma.github.io/iquit",
+      "appStore": "https://apps.apple.com/us/app/iquit-vape-free-companion/id6749792219"
+    },
+    "thumbnail": "assets/trailpad-thumb.png",
+    "hero": "assets/trailpad-hero.png",
+    "year": 2023,
+    "stack": ["SwiftUI", "SwiftData"],
+    "highlights": ["Calm support", "Health stats", "Shareable GPX routes"]
+  }
+]
