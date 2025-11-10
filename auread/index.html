@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auread: Audio Reading Made Simple</title>
+    <meta
+      name="description"
+      content="Transform your reading experience with audio. Available on iOS."
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      .app-hero {
+        text-align: center;
+        padding: var(--space-6) var(--space-4);
+      }
+      .app-hero h1 {
+        font-size: clamp(28px, 5vw, 48px);
+        margin-bottom: var(--space-2);
+      }
+      .app-hero p {
+        font-size: clamp(16px, 2.5vw, 22px);
+        color: var(--muted);
+        margin-bottom: var(--space-4);
+      }
+      .download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        padding: 12px 24px;
+        background: var(--primary);
+        color: var(--primary-contrast);
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.2s ease;
+      }
+      .download-btn:hover {
+        transform: translateY(-2px);
+      }
+      .legal-links {
+        margin-top: var(--space-5);
+        padding-top: var(--space-4);
+        border-top: 1px solid var(--border);
+        text-align: center;
+      }
+      .legal-links a {
+        color: var(--primary);
+        text-decoration: none;
+        margin: 0 var(--space-2);
+      }
+      .legal-links a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <h1 class="site-title">
+          <a href="/" style="text-decoration: none; color: inherit"
+            >Mark Webb — Apps</a
+          >
+        </h1>
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          aria-pressed="false"
+          aria-label="Toggle color theme"
+          title="Toggle theme"
+        >
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" role="main">
+      <div class="container">
+        <div class="app-hero">
+          <h1>Auread</h1>
+          <p>Audio Reading Made Simple</p>
+          <a
+            href="#"
+            class="download-btn"
+            target="_blank"
+            rel="noopener"
+          >
+            <span aria-hidden="true"></span>
+            Download on the App Store
+          </a>
+
+          <div class="legal-links">
+            <a href="/auread/terms.html">Terms and Conditions</a>
+            •
+            <a href="/auread/privacy.html">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>© 2025 Mark Webb</p>
+      </div>
+    </footer>
+
+    <script>
+      // Minimal theme toggle
+      (function () {
+        const Theme = {
+          getPreference() {
+            return localStorage.getItem("theme-preference");
+          },
+          apply(theme) {
+            document.documentElement.setAttribute("data-theme", theme);
+            if (theme === "auto") localStorage.removeItem("theme-preference");
+            else localStorage.setItem("theme-preference", theme);
+          },
+          init() {
+            const stored = Theme.getPreference();
+            document.documentElement.setAttribute(
+              "data-theme",
+              stored === "light" || stored === "dark" ? stored : "auto"
+            );
+            const toggle = document.getElementById("themeToggle");
+            if (toggle) {
+              toggle.addEventListener("click", () => {
+                const current =
+                  document.documentElement.getAttribute("data-theme") || "auto";
+                const next =
+                  current === "dark"
+                    ? "light"
+                    : current === "light"
+                    ? "auto"
+                    : "dark";
+                Theme.apply(next);
+                toggle.setAttribute("aria-pressed", String(next !== "auto"));
+                toggle.querySelector(".theme-icon").textContent =
+                  next === "dark" ? "🌙" : next === "light" ? "☀️" : "🌓";
+              });
+            }
+          },
+        };
+        Theme.init();
+      })();
+    </script>
+  </body>
+</html>
+
