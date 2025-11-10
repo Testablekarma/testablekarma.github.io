@@ -1,150 +1,401 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="auto">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Auread: Audio Reading Made Simple</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Auread – Listen to Your Reading</title>
     <meta
       name="description"
-      content="Transform your reading experience with audio. Available on iOS."
+      content="Transform your reading experience with beautiful audio. Focus on what matters with natural text-to-speech."
     />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="Auread – Listen to Your Reading" />
+    <meta
+      property="og:description"
+      content="Transform your reading experience with beautiful audio."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://testablekarma.github.io/auread/"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
     <style>
-      .app-hero {
-        text-align: center;
-        padding: var(--space-6) var(--space-4);
+      :root {
+        --bg-ivory: rgb(250, 245, 235);
+        --bg-clay: rgb(242, 232, 219);
+        --bg-rose: rgb(245, 237, 227);
+        --sage: rgb(107, 140, 97);
+        --soft-sage: rgb(153, 184, 143);
+        --terracotta: rgb(217, 115, 77);
+        --coral: rgb(230, 140, 107);
+        --wheat: rgb(232, 191, 127);
+        --amber: rgb(237, 166, 89);
+        --charcoal: rgb(59, 58, 54);
+        --taupe: rgb(131, 125, 117);
+        --sand: rgb(163, 156, 145);
+        --warm-neutral: rgb(222, 214, 202);
       }
-      .app-hero h1 {
-        font-size: clamp(28px, 5vw, 48px);
-        margin-bottom: var(--space-2);
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-ivory: rgb(36, 31, 30);
+          --bg-clay: rgb(46, 43, 39);
+          --bg-rose: rgb(41, 38, 35);
+          --sage: rgb(140, 179, 130);
+          --soft-sage: rgb(122, 148, 112);
+          --terracotta: rgb(204, 122, 89);
+          --coral: rgb(209, 133, 102);
+          --wheat: rgb(178, 148, 107);
+          --amber: rgb(217, 153, 89);
+          --charcoal: rgb(238, 233, 227);
+          --taupe: rgb(181, 175, 168);
+          --sand: rgb(143, 137, 130);
+          --warm-neutral: rgb(72, 69, 64);
+        }
       }
-      .app-hero p {
-        font-size: clamp(16px, 2.5vw, 22px);
-        color: var(--muted);
-        margin-bottom: var(--space-4);
+      * {
+        box-sizing: border-box;
       }
-      .download-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--space-2);
-        padding: 12px 24px;
-        background: var(--primary);
-        color: var(--primary-contrast);
-        border-radius: 12px;
+      body {
+        margin: 0;
+        font-family: ui-rounded, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+        background: linear-gradient(
+            180deg,
+            var(--bg-ivory) 0%,
+            rgb(247, 232, 218) 40%,
+            var(--bg-rose) 100%
+          );
+        min-height: 100vh;
+        color: var(--charcoal);
+        line-height: 1.65;
+      }
+      a {
+        color: var(--sage);
         text-decoration: none;
-        font-weight: 600;
-        transition: transform 0.2s ease;
       }
-      .download-btn:hover {
-        transform: translateY(-2px);
-      }
-      .legal-links {
-        margin-top: var(--space-5);
-        padding-top: var(--space-4);
-        border-top: 1px solid var(--border);
-        text-align: center;
-      }
-      .legal-links a {
-        color: var(--primary);
-        text-decoration: none;
-        margin: 0 var(--space-2);
-      }
-      .legal-links a:hover {
+      a:hover {
         text-decoration: underline;
       }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 32px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: 20px;
+        color: var(--charcoal);
+      }
+      .logo-icon {
+        font-size: 32px;
+        line-height: 1;
+      }
+      nav a {
+        margin-left: 20px;
+        color: var(--taupe);
+        font-weight: 500;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 48px;
+        align-items: center;
+        padding: 60px 0 80px;
+      }
+      @media (max-width: 768px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 36px;
+          padding: 40px 0 60px;
+        }
+      }
+      .hero h1 {
+        font-size: clamp(32px, 5.5vw, 52px);
+        line-height: 1.15;
+        margin: 0 0 16px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      .kicker {
+        color: var(--sage);
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 13px;
+        margin-bottom: 12px;
+      }
+      .subtitle {
+        font-size: clamp(18px, 2.5vw, 22px);
+        color: var(--taupe);
+        margin-bottom: 24px;
+        line-height: 1.6;
+      }
+      .cta {
+        display: flex;
+        gap: 14px;
+        margin-top: 28px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        background: linear-gradient(135deg, var(--sage), var(--soft-sage));
+        color: white;
+        padding: 14px 28px;
+        border-radius: 16px;
+        font-weight: 700;
+        font-size: 16px;
+        box-shadow: 0 8px 24px rgba(107, 140, 97, 0.25);
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(107, 140, 97, 0.35);
+        text-decoration: none;
+      }
+      .btn.secondary {
+        background: rgba(107, 140, 97, 0.1);
+        color: var(--sage);
+        box-shadow: none;
+        border: 2px solid rgba(107, 140, 97, 0.2);
+      }
+      .btn.secondary:hover {
+        background: rgba(107, 140, 97, 0.15);
+      }
+      .ticks {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+        margin-top: 28px;
+      }
+      .tick {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-size: 15px;
+        color: var(--taupe);
+      }
+      .tick::before {
+        content: "✓";
+        color: var(--sage);
+        font-weight: 800;
+        font-size: 18px;
+      }
+      .hero-visual {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .book-icon {
+        font-size: clamp(120px, 20vw, 200px);
+        opacity: 0.9;
+        filter: drop-shadow(0 20px 40px rgba(107, 140, 97, 0.15));
+      }
+      .cardgrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin: 32px 0 60px;
+      }
+      .card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.7),
+          rgba(242, 232, 219, 0.5)
+        );
+        backdrop-filter: blur(12px);
+        padding: 28px;
+        border-radius: 24px;
+        border: 1px solid rgba(107, 140, 97, 0.15);
+        box-shadow: 0 8px 24px rgba(59, 58, 54, 0.08);
+        transition: all 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 36px rgba(59, 58, 54, 0.12);
+        border-color: rgba(107, 140, 97, 0.25);
+      }
+      .card-icon {
+        font-size: 36px;
+        margin-bottom: 12px;
+        display: block;
+      }
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--charcoal);
+      }
+      .card p {
+        margin: 0;
+        color: var(--taupe);
+        line-height: 1.6;
+      }
+      section h2 {
+        font-size: clamp(28px, 4vw, 38px);
+        margin: 0 0 24px;
+        font-weight: 800;
+        color: var(--charcoal);
+      }
+      .badge {
+        font-size: 12px;
+        background: rgba(107, 140, 97, 0.15);
+        color: var(--sage);
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-bottom: 16px;
+      }
+      #privacy {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.6),
+          rgba(245, 237, 227, 0.6)
+        );
+        backdrop-filter: blur(12px);
+        padding: 32px;
+        border-radius: 24px;
+        border: 1px solid rgba(107, 140, 97, 0.12);
+        margin: 48px 0;
+      }
+      #privacy p {
+        color: var(--taupe);
+        line-height: 1.7;
+        margin: 0;
+      }
+      footer {
+        border-top: 2px solid var(--warm-neutral);
+        margin-top: 60px;
+        padding-top: 24px;
+        color: var(--taupe);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 14px;
+      }
+      footer a {
+        color: var(--sage);
+      }
     </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Auread",
+        "operatingSystem": "iOS",
+        "applicationCategory": "ProductivityApplication",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Transform your reading experience with beautiful audio. Focus on what matters with natural text-to-speech."
+      }
+    </script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="wrap">
+      <header>
+        <div class="logo">
+          <span class="logo-icon">📖</span>
+          <span>Auread</span>
+        </div>
+        <nav>
+          <a href="#features">Features</a>
+          <a href="privacy.html">Privacy & Terms</a>
+        </nav>
+      </header>
 
-    <header class="site-header" role="banner">
-      <div class="container header-inner">
-        <h1 class="site-title">
-          <a href="/" style="text-decoration: none; color: inherit"
-            >Mark Webb — Apps</a
-          >
-        </h1>
-        <button
-          id="themeToggle"
-          class="theme-toggle"
-          aria-pressed="false"
-          aria-label="Toggle color theme"
-          title="Toggle theme"
-        >
-          <span class="theme-icon" aria-hidden="true">🌙</span>
-        </button>
-      </div>
-    </header>
-
-    <main id="main" role="main">
-      <div class="container">
-        <div class="app-hero">
-          <h1>Auread</h1>
-          <p>Audio Reading Made Simple</p>
-          <a
-            href="#"
-            class="download-btn"
-            target="_blank"
-            rel="noopener"
-          >
-            <span aria-hidden="true"></span>
-            Download on the App Store
-          </a>
-
-          <div class="legal-links">
-            <a href="/auread/terms.html">Terms and Conditions</a>
-            •
-            <a href="/auread/privacy.html">Privacy Policy</a>
+      <section class="hero">
+        <div>
+          <div class="kicker">Listen to your reading</div>
+          <h1>Reading made effortless.</h1>
+          <p class="subtitle">
+            Transform any text into beautiful, natural audio. Read with your
+            ears, not just your eyes.
+          </p>
+          <div class="cta">
+            <a class="btn" href="#" target="_blank" rel="noopener"
+              >Download on the App Store</a
+            >
+          </div>
+          <div class="ticks">
+            <div class="tick">Natural voices</div>
+            <div class="tick">Offline reading</div>
+            <div class="tick">Privacy focused</div>
           </div>
         </div>
-      </div>
-    </main>
+        <div class="hero-visual">
+          <div class="book-icon">📖</div>
+        </div>
+      </section>
 
-    <footer class="site-footer" role="contentinfo">
-      <div class="container footer-inner">
-        <p>© 2025 Mark Webb</p>
-      </div>
-    </footer>
+      <section id="features">
+        <h2>Why Auread</h2>
+        <div class="cardgrid">
+          <div class="card">
+            <span class="card-icon">🎧</span>
+            <h3>Listen anywhere</h3>
+            <p>
+              Transform articles, documents, and books into audio. Perfect for
+              commuting, exercising, or multitasking.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🌿</span>
+            <h3>Natural & clear</h3>
+            <p>
+              High-quality text-to-speech with natural pacing and pronunciation.
+              Easy on the ears, easy on the mind.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🔒</span>
+            <h3>Privacy first</h3>
+            <p>
+              Your content stays on your device. No cloud storage, no tracking,
+              no data collection. Just simple, private reading.
+            </p>
+          </div>
+        </div>
+      </section>
 
+      <section id="privacy">
+        <span class="badge">Privacy</span>
+        <p>
+          Your reading is yours alone. All processing happens on your device.
+          We don't collect, store, or share your content. Read the full policy
+          <a href="privacy.html">here</a>.
+        </p>
+      </section>
+
+      <footer>
+        <div>© <span id="y"></span> Mark Webb</div>
+        <div>
+          <a href="mailto:apps.backflip.media@gmail.com"
+            >apps.backflip.media@gmail.com</a
+          >
+          ·
+          <a href="privacy.html">Privacy</a>
+          ·
+          <a href="terms.html">Terms</a>
+        </div>
+      </footer>
+    </div>
     <script>
-      // Minimal theme toggle
-      (function () {
-        const Theme = {
-          getPreference() {
-            return localStorage.getItem("theme-preference");
-          },
-          apply(theme) {
-            document.documentElement.setAttribute("data-theme", theme);
-            if (theme === "auto") localStorage.removeItem("theme-preference");
-            else localStorage.setItem("theme-preference", theme);
-          },
-          init() {
-            const stored = Theme.getPreference();
-            document.documentElement.setAttribute(
-              "data-theme",
-              stored === "light" || stored === "dark" ? stored : "auto"
-            );
-            const toggle = document.getElementById("themeToggle");
-            if (toggle) {
-              toggle.addEventListener("click", () => {
-                const current =
-                  document.documentElement.getAttribute("data-theme") || "auto";
-                const next =
-                  current === "dark"
-                    ? "light"
-                    : current === "light"
-                    ? "auto"
-                    : "dark";
-                Theme.apply(next);
-                toggle.setAttribute("aria-pressed", String(next !== "auto"));
-                toggle.querySelector(".theme-icon").textContent =
-                  next === "dark" ? "🌙" : next === "light" ? "☀️" : "🌓";
-              });
-            }
-          },
-        };
-        Theme.init();
-      })();
+      document.getElementById("y").textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
