@@ -118,11 +118,15 @@
         <div class="highlight-box">
           <p><strong>Privacy Summary:</strong></p>
           <ul style="margin-bottom: 0">
+            <li>Your content is stored locally on your device by default</li>
             <li>
-              We collect only the information necessary to provide our audio
-              reading services
+              The optional Circles feature uses iCloud (via CloudKit) to share
+              selected content with people you choose
             </li>
-            <li>Your content and data are processed securely</li>
+            <li>
+              We collect anonymized analytics to improve the app (Firebase,
+              Sentry)
+            </li>
             <li>We do not sell your personal information</li>
             <li>
               You have control over your data and can request deletion at any
@@ -146,10 +150,17 @@
             <strong>User Preferences:</strong> Settings and preferences you
             configure within the App.
           </li>
+          <li>
+            <strong>Circles Content:</strong> If you use the optional Circles
+            feature, selected content you choose to share with your circles is
+            stored in your personal iCloud account via Apple's CloudKit service.
+          </li>
         </ul>
         <p>
           <strong>Note:</strong> The App does not require you to create an
-          account. All data is stored locally on your device.
+          account. By default, all data is stored locally on your device. If you
+          choose to use the Circles feature, only the content you explicitly
+          share with circles is synced via your iCloud account.
         </p>
 
         <h3>1.2 Information Automatically Collected</h3>
@@ -178,6 +189,13 @@
           <li>
             <strong>Sentry:</strong> We collect error and crash reports through
             Sentry to improve app stability and fix technical issues.
+          </li>
+          <li>
+            <strong>Apple CloudKit:</strong> If you use the Circles feature,
+            content you choose to share is stored in your personal iCloud
+            account via CloudKit. This service is managed by Apple and subject
+            to Apple's privacy policies. We do not have access to your iCloud
+            data.
           </li>
         </ul>
 
@@ -214,9 +232,28 @@
 
         <h3>3.1 Where We Store Your Data</h3>
         <p>
-          Your data is stored locally on your device. We do not store your
-          personal content on our servers.
+          Your data is primarily stored locally on your device. We do not store
+          your personal content on our servers. However, if you choose to use
+          the optional Circles feature:
         </p>
+        <ul>
+          <li>
+            Content you explicitly share with circles is stored in your personal
+            iCloud account via Apple's CloudKit service
+          </li>
+          <li>
+            This data is managed entirely by Apple and subject to Apple's
+            privacy policies
+          </li>
+          <li>
+            We do not have access to your iCloud data; only you and the circle
+            members you choose to share with can access shared content
+          </li>
+          <li>
+            You can disable the Circles feature at any time, and remove shared
+            content from your circles
+          </li>
+        </ul>
 
         <h3>3.2 Security Measures</h3>
         <p>We implement industry-standard security measures including:</p>
@@ -255,10 +292,18 @@
             <strong>Sentry:</strong> For error tracking, crash reporting, and
             app stability improvements
           </li>
+          <li>
+            <strong>Apple CloudKit:</strong> If you use the Circles feature,
+            content you choose to share is stored in your iCloud account. This
+            is managed by Apple and we do not have access to this data. Only you
+            and circle members you authorize can access shared content.
+          </li>
         </ul>
         <p>
-          These services only receive anonymized usage and diagnostic data. Your
-          personal content remains on your device.
+          Firebase and Sentry only receive anonymized usage and diagnostic data.
+          Your personal content remains on your device, except for content you
+          explicitly choose to share via the Circles feature, which is stored in
+          your iCloud account.
         </p>
 
         <h3>4.2 Legal Requirements</h3>
@@ -286,14 +331,21 @@
         <h3>5.1 Access and Correction</h3>
         <p>
           You can access and update your preferences within the App settings at
-          any time. Your content is stored locally on your device.
+          any time. Your content is stored locally on your device. If you use
+          the Circles feature, shared content is stored in your iCloud account
+          and can be accessed and managed through the App.
         </p>
 
         <h3>5.2 Data Deletion</h3>
         <p>You can delete:</p>
         <ul>
           <li>Individual files and content directly in the App</li>
-          <li>All app data by deleting the App from your device</li>
+          <li>All local app data by deleting the App from your device</li>
+          <li>
+            Circles content by removing it from your circles within the App, or
+            by disabling the Circles feature and deleting data from your iCloud
+            storage settings
+          </li>
           <li>
             To request deletion of any analytics or crash data we may have
             collected, contact us at
@@ -419,7 +471,9 @@
 
         <p class="meta">
           By using Auread, you acknowledge that you have read and understood
-          this Privacy Policy and agree to its terms.
+          this Privacy Policy and agree to its terms. If you choose to use the
+          optional Circles feature, you also agree to Apple's iCloud and
+          CloudKit terms and privacy policies.
         </p>
       </div>
     </main>
