@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>iQuit: Vape Free Tracker</title>
+    <meta
+      name="description"
+      content="Quit vaping and stay quit. Track your streak, ride out cravings, and see exactly what you've saved. Entirely private — everything stays on your device."
+    />
+    <link rel="icon" href="icon.png" />
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="iQuit: Vape Free Tracker" />
+    <meta
+      property="og:description"
+      content="Quit vaping and stay quit, one day at a time."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://testablekarma.github.io/iquit/" />
+    <meta property="og:image" content="hero.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      :root {
+        --bg: #06131a;
+        --fg: #eafffa;
+        --muted: #9fd9c9;
+        --brand: #00c794;
+        --brand2: #0094b8;
+        --card: #0c1f24;
+        --ok: #39d98a;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #ffffff;
+          --fg: #06131a;
+          --muted: #3d6b60;
+          --card: #f2fbf8;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          Helvetica, Arial;
+        background: radial-gradient(
+            1000px 600px at 20% -10%,
+            rgba(0, 199, 148, 0.18),
+            transparent
+          ),
+          radial-gradient(
+            800px 500px at 120% 20%,
+            rgba(0, 148, 184, 0.18),
+            transparent
+          ),
+          var(--bg);
+        color: var(--fg);
+        line-height: 1.6;
+      }
+      a {
+        color: var(--brand);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 32px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: 18px;
+      }
+      .logo img {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+      }
+      nav a {
+        margin-left: 16px;
+        color: var(--muted);
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 36px;
+        align-items: center;
+        padding: 48px 0;
+      }
+      .hero h1 {
+        font-size: clamp(28px, 5vw, 44px);
+        line-height: 1.1;
+        margin: 0 0 12px;
+      }
+      .kicker {
+        color: var(--muted);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .cta {
+        display: flex;
+        gap: 12px;
+        margin-top: 18px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        background: linear-gradient(90deg, var(--brand2), var(--brand));
+        color: #001410;
+        padding: 12px 18px;
+        border-radius: 12px;
+        font-weight: 700;
+        box-shadow: 0 10px 30px rgba(0, 199, 148, 0.25);
+      }
+      .btn.secondary {
+        background: transparent;
+        color: var(--fg);
+        border: 1px solid rgba(159, 217, 201, 0.25);
+      }
+      .cardgrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin: 20px 0 40px;
+      }
+      .card {
+        background: var(--card);
+        padding: 18px;
+        border-radius: 16px;
+        border: 1px solid rgba(159, 217, 201, 0.12);
+      }
+      .card h3 {
+        margin: 0 0 6px;
+        font-size: 18px;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        color: var(--muted);
+      }
+      footer {
+        border-top: 1px solid rgba(159, 217, 201, 0.15);
+        margin-top: 40px;
+        padding-top: 18px;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .ticks {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .tick {
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+      }
+      .badge {
+        font-size: 12px;
+        background: rgba(0, 199, 148, 0.18);
+        color: var(--brand);
+        padding: 2px 8px;
+        border-radius: 999px;
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "iQuit: Vape Free Tracker",
+        "operatingSystem": "iOS",
+        "applicationCategory": "HealthApplication",
+        "description": "Quit vaping and stay quit. Track your streak, ride out cravings, and see exactly what you've saved."
+      }
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="logo">
+          <img src="icon.png" alt="iQuit icon" />
+          <span>iQuit</span>
+        </div>
+        <nav>
+          <a href="#features">Features</a>
+          <a href="privacy.html">Privacy & Terms</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div>
+          <div class="kicker">Quit vaping, stay quit</div>
+          <h1>Your quit, tracked. Your cravings, handled.</h1>
+          <p class="mono">
+            Streak tracking • Craving diary • Guided breathing • Private by
+            design
+          </p>
+          <div class="cta">
+            <a
+              class="btn"
+              href="https://apps.apple.com/us/app/iquit-vape-free-companion/id6749792219"
+              >Download on the App Store</a
+            >
+          </div>
+          <div class="ticks">
+            <div class="tick">✅ Live streak & health milestones</div>
+            <div class="tick">✅ Craving diary with mood tracking</div>
+            <div class="tick">✅ Guided breathing for cravings</div>
+            <div class="tick">✅ Sobriety chips & badges</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <h2>Why iQuit</h2>
+        <div class="cardgrid">
+          <div class="card">
+            <h3>Watch your progress add up</h3>
+            <p>
+              A live streak, health milestones from 20 minutes to a full
+              year, and exactly what you've saved by not vaping.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Ride out a craving</h3>
+            <p>
+              Log cravings and mood in your diary, spot your triggers, and
+              use a guided breathing exercise when a craving hits.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Private by design</h3>
+            <p>
+              Everything stays on your device. No accounts, no analytics, no
+              third parties — your data is yours.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="privacy">
+        <span class="badge">Privacy</span>
+        <p>
+          iQuit doesn't collect, transmit, or sell your data — there's no
+          server and no third-party tracking at all. Read the full policy
+          <a href="privacy.html">here</a>.
+        </p>
+      </section>
+
+      <footer>
+        <div>© <span id="y"></span> iQuit</div>
+        <div>
+          <a href="mailto:apps.backflip.media@gmail.com"
+            >apps.backflip.media@gmail.com</a
+          >
+          ·
+          <a href="privacy.html">Privacy</a>
+          ·
+          <a href="terms.html">Terms</a>
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

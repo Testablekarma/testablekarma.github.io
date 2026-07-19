@@ -38,17 +38,22 @@
     ]
   },
   {
-    "name": "iQuit: Vape-Free Companion",
-    "tagline": "Calm support & health stats",
+    "name": "iQuit: Vape Free Tracker",
+    "tagline": "Quit vaping and stay quit, one day at a time",
     "platforms": ["iOS"],
     "links": {
       "website": "https://testablekarma.github.io/iquit",
       "appStore": "https://apps.apple.com/us/app/iquit-vape-free-companion/id6749792219"
     },
-    "thumbnail": "assets/trailpad-thumb.png",
-    "hero": "assets/trailpad-hero.png",
-    "year": 2023,
+    "thumbnail": "assets/iquit-thumb.png",
+    "hero": "assets/iquit-hero.png",
+    "year": 2026,
     "stack": ["SwiftUI", "SwiftData"],
-    "highlights": ["Calm support", "Health stats", "Shareable GPX routes"]
+    "highlights": [
+      "Streak & health milestone tracking",
+      "Craving diary with guided breathing",
+      "Sobriety chips & badges",
+      "Fully private, no server, no accounts"
+    ]
   }
 ]
