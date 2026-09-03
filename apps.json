@@ -38,8 +38,8 @@
     ]
   },
   {
-    "name": "iQuit: Vape Free Tracker",
-    "tagline": "Quit vaping and stay quit, one day at a time",
+    "name": "Bracken Coach",
+    "tagline": "A quit-vaping coach that runs entirely on-device",
     "platforms": ["iOS"],
     "links": {
       "website": "https://testablekarma.github.io/iquit",
@@ -48,12 +48,12 @@
     "thumbnail": "assets/iquit-thumb.png",
     "hero": "assets/iquit-hero.png",
     "year": 2026,
-    "stack": ["SwiftUI", "SwiftData"],
+    "stack": ["SwiftUI", "SwiftData", "FoundationModels", "HealthKit"],
     "highlights": [
-      "Streak & health milestone tracking",
+      "On-device conversational coach, no third-party AI",
+      "Measured recovery via Apple Health",
       "Craving diary with guided breathing",
-      "Sobriety chips & badges",
-      "Fully private, no server, no accounts"
+      "Coach, diary and health data never leave the device"
     ]
   }
 ]
