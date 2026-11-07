@@ -9,12 +9,17 @@
     <link rel="stylesheet" href="enclosr.css" />
   </head>
   <body>
+    <!--
+      Content source: FishTankLog repo, docs/site/index.html (branch store-submission-prep). Keep the two in step.
+      Before publishing: the publisher name in the footer is still a token; see docs/store-submission-checklist.md.
+    -->
     <div class="wrap">
       <header class="site">
         <a class="wordmark" href="/enclosr/">Enclosr</a>
         <nav class="site" aria-label="Enclosr">
           <a href="/enclosr/" aria-current="page">Support</a>
           <a href="/enclosr/privacy.html">Privacy</a>
+          <a href="/enclosr/terms.html">Terms</a>
         </nav>
       </header>
 
@@ -28,9 +33,10 @@
         <div class="box">
           <p><strong>Contact</strong></p>
           <p>
-            Email <a href="mailto:apps.backflip.media@gmail.com?subject=Enclosr%20support">apps.backflip.media@gmail.com</a>
-            and include your iPhone or iPad model, your iOS version, and what you were doing when the
-            problem happened. Replies usually arrive within a couple of days.
+            Email <a href="mailto:apps.backflip.media+enclosr@gmail.com?subject=Enclosr%20support">apps.backflip.media+enclosr@gmail.com</a>
+            and include your iPhone or iPad model, your iOS version, the Enclosr version (Settings, at the
+            bottom), and what you were doing when the problem happened. Replies usually arrive within a
+            couple of days.
           </p>
         </div>
 
@@ -39,18 +45,28 @@
         <details>
           <summary>Where is my data stored?</summary>
           <p>
-            On your device only. Enclosr has no account and no server, so your habitats, readings, animals
-            and photos are never uploaded. That also means we can't recover data for you if the app is
-            deleted — see the next question.
+            On your iPhone or iPad, and, if you are signed in to iCloud, synced between your own devices
+            through your private iCloud. Sync is free. Enclosr has no account and no server of ours, so we
+            cannot see your habitats, readings, animals or photos, and we cannot recover them for you.
           </p>
         </details>
 
         <details>
-          <summary>How do I move to a new phone, or keep a safe copy?</summary>
+          <summary>Sync is not working.</summary>
           <p>
-            Enclosr Pro includes backup and restore. Open Settings › Data and choose Back up to save one
-            file to Files, then use Restore from backup on the new device. CSV export of your readings is
-            free for everyone.
+            Check that you are signed in to iCloud and that Enclosr is switched on in iOS Settings › your
+            name › iCloud. Sync uses your iCloud storage, so a full iCloud account will pause it. Changes
+            can take a few minutes to arrive on your other devices.
+          </p>
+        </details>
+
+        <details>
+          <summary>How do I keep a safe copy, or move to a new phone?</summary>
+          <p>
+            With iCloud on, a new device signed in to the same Apple Account picks your data up by itself.
+            For a copy you control, Enclosr Pro includes backup and restore: open Settings › Data and
+            choose Back up to save one file to Files, then Restore from backup on the other device. CSV
+            export of your readings is free for everyone.
           </p>
         </details>
 
@@ -66,7 +82,7 @@
         <details>
           <summary>What does the free version include?</summary>
           <p>
-            Up to two habitats in any combination of aquariums and terrariums, 90 days of chart history,
+            Up to three habitats in any combination of aquariums and terrariums, 90 days of chart history,
             and 25 photos. Reminders and CSV export are always free. Enclosr Pro removes the limits.
           </p>
         </details>
@@ -74,9 +90,11 @@
         <details>
           <summary>How do I restore a purchase, or cancel my subscription?</summary>
           <p>
-            Open the Pro screen in Settings and tap Restore Purchases. Subscriptions are managed by Apple:
-            go to Settings › your name › Subscriptions on your device. We can't cancel or refund purchases
-            for you; refunds are handled at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.
+            Open Settings › Pro and tap Restore purchase. This works for the monthly and yearly
+            subscriptions and for the lifetime purchase, using the Apple Account that bought it.
+            Subscriptions are managed by Apple: go to Settings › your name › Subscriptions on your device.
+            Deleting the app does not cancel a subscription. We can't cancel or refund purchases for you;
+            refunds are handled at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.
           </p>
         </details>
 
@@ -84,13 +102,14 @@
           <summary>How do I delete my data?</summary>
           <p>
             Delete a habitat inside the app to remove it and its readings, or delete the app to remove
-            everything it stores on the device. Nothing is held anywhere else.
+            everything it stores on that device. To remove the synced copy as well, go to iOS Settings ›
+            your name › iCloud › Manage Account Storage › Enclosr and choose Delete Data.
           </p>
         </details>
       </main>
 
       <footer>
-        <p>© 2026 Mark Webb. <a href="/enclosr/privacy.html">Privacy Policy</a></p>
+        <p>© 2026 PUBLISHER_NAME_PLACEHOLDER. <a href="/enclosr/privacy.html">Privacy Policy</a> · <a href="/enclosr/terms.html">Terms</a></p>
       </footer>
     </div>
   </body>
