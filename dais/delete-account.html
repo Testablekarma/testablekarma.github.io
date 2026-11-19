@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Delete your account — DAIS</title>
+    <meta
+      name="description"
+      content="How to delete your DAIS account and data"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      .legal-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: var(--space-5) var(--space-4);
+      }
+      .legal-content h1 {
+        font-size: clamp(28px, 4vw, 40px);
+        margin-bottom: var(--space-2);
+      }
+      .legal-content h2 {
+        font-size: clamp(20px, 3vw, 28px);
+        margin-top: var(--space-5);
+        margin-bottom: var(--space-3);
+      }
+      .legal-content h3 {
+        font-size: clamp(16px, 2.5vw, 22px);
+        margin-top: var(--space-4);
+        margin-bottom: var(--space-2);
+      }
+      .legal-content p,
+      .legal-content ul,
+      .legal-content ol {
+        margin-bottom: var(--space-3);
+        line-height: 1.7;
+      }
+      .legal-content ul,
+      .legal-content ol {
+        padding-left: var(--space-4);
+      }
+      .legal-content li {
+        margin-bottom: var(--space-2);
+      }
+      .legal-content a {
+        color: var(--primary);
+        text-decoration: underline;
+      }
+      .legal-content a:hover {
+        text-decoration: none;
+      }
+      .legal-nav {
+        display: flex;
+        gap: var(--space-3);
+        margin-bottom: var(--space-4);
+        flex-wrap: wrap;
+      }
+      .legal-nav a {
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--bg-elev);
+        text-decoration: none;
+        color: inherit;
+      }
+      .legal-nav a:hover {
+        background: var(--bg);
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-bottom: var(--space-4);
+      }
+      .highlight-box {
+        background: var(--bg-elev);
+        border-left: 4px solid var(--primary);
+        padding: var(--space-3);
+        margin: var(--space-3) 0;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <h1 class="site-title">
+          <a href="/" style="text-decoration: none; color: inherit"
+            >Mark Webb — Apps</a
+          >
+        </h1>
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          aria-pressed="false"
+          aria-label="Toggle color theme"
+          title="Toggle theme"
+        >
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" role="main">
+      <div class="legal-content">
+        <div class="legal-nav"><a href="/dais/privacy.html">Privacy Policy</a><a href="/dais/delete-account.html">Delete your account</a></div>
+<h1>Delete your DAIS account and data</h1>
+        <p class="meta"><strong>DAIS: Domestic Abuse Diary</strong> (The Daisy Chain Project)<br />Last updated: 19 November 2026</p>
+
+        <div class="highlight-box"><p style="margin-bottom:0"><strong>Deleting your account permanently removes your account and every diary entry, photo and video. It cannot be undone.</strong> Export your diary first if you need a copy.</p></div>
+
+        <h2>Option 1: delete it in the app (fastest)</h2>
+        <ol>
+          <li>Open DAIS and enter your passcode.</li>
+          <li>Go to the <strong>Settings</strong> tab.</li>
+          <li>Tap <strong>Delete my account and data</strong>.</li>
+          <li>Confirm with <strong>Delete everything</strong>.</li>
+        </ol>
+        <p>This deletes your data from our server and from your phone straight away.</p>
+
+        <h2>Option 2: ask us to delete it</h2>
+        <p>If you no longer have the app or your phone, email <a href="mailto:info@thedaisychainproject.com?subject=Delete%20my%20DAIS%20account">info@thedaisychainproject.com</a> from the email address you registered with, with the subject "Delete my DAIS account". We will delete your account and data and confirm by email. For your safety, we will only reply to the registered address.</p>
+
+        <h2>What is deleted</h2>
+        <ul>
+          <li>Your account (name, email address and login).</li>
+          <li>All diary entries: date, location, events and feelings.</li>
+          <li>All photos and videos attached to entries, with their captions.</li>
+          <li>The copy of your diary and your passcode stored on your phone.</li>
+        </ul>
+
+        <h2>What we may keep</h2>
+        <p>Anonymous crash reports and usage statistics are not linked to your diary and are not deleted individually. Sentry crash reports and Firebase Analytics data are kept for the retention periods set by those providers. If you exported your diary and shared it with someone (for example the police or a solicitor), we cannot delete their copy.</p>
+
+        <h2>Staying safe</h2>
+        <p>Deleting your account does not remove the app from your phone. If you are worried someone may see it, uninstall it and clear your recent apps. If you are in immediate danger, call 999.</p>
+</main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>© 2026 Mark Webb</p>
+        <p>
+          <a href="/dais/delete-account.html">Delete your account</a> •
+          <a href="/dais/privacy.html">Privacy</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Minimal theme toggle for legal pages
+      (function () {
+        const Theme = {
+          getPreference() {
+            return localStorage.getItem("theme-preference");
+          },
+          apply(theme) {
+            document.documentElement.setAttribute("data-theme", theme);
+            if (theme === "auto") localStorage.removeItem("theme-preference");
+            else localStorage.setItem("theme-preference", theme);
+          },
+          init() {
+            const stored = Theme.getPreference();
+            document.documentElement.setAttribute(
+              "data-theme",
+              stored === "light" || stored === "dark" ? stored : "auto"
+            );
+            const toggle = document.getElementById("themeToggle");
+            if (toggle) {
+              toggle.addEventListener("click", () => {
+                const current =
+                  document.documentElement.getAttribute("data-theme") || "auto";
+                const next =
+                  current === "dark"
+                    ? "light"
+                    : current === "light"
+                    ? "auto"
+                    : "dark";
+                Theme.apply(next);
+                toggle.setAttribute("aria-pressed", String(next !== "auto"));
+                toggle.querySelector(".theme-icon").textContent =
+                  next === "dark" ? "🌙" : next === "light" ? "☀️" : "🌓";
+              });
+            }
+          },
+        };
+        Theme.init();
+      })();
+    </script>
+  </body>
+</html>
